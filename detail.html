@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <title>스티브뱅크몰</title>
+</head>
+
+<body>
+    <script src="js/common.js"></script>
+    <div class="header_top">
+        <div class="logo">
+            <img src="images/logo.png" alt="로고">
+        </div>
+        <div class="search_box">
+            <input type="">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="top_menu">
+            <ul class="top_list">
+                <li><a href="">장바구니</a></li>
+                <li><a href="">로그인</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <div class="main_menu">
+            <nav class="main_nav">
+                <ul>
+                    <li><a href="">패션</a></li>
+                    <li><a href="">잡화</a></li>
+                    <li><a href="">뷰티</a></li>
+                    <li><a href="">디지털</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <main class="detail_main">
+        <div class="container">
+            <div class="right_img">
+                <img src="images/goods3_400.jpg" alt="슬림 스판 검정바지" />
+            </div>
+            <div class="left_info">
+                <h2>슬림 스판 청바지</h2>
+                <div class="product_price">
+                    <strong>24,000원</strong>
+                </div>
+                <div class="product_shipping_fee">
+                    <strong>무료배송</strong>
+                    <em>내일 <span class="tomorrow"></span> 도착 보장 (오후 13시 전 주문 시)</em>
+                </div>
+                <div class="cart_info">
+                    <div class="quantity_form">
+                        <button onclick="increase()"><i class="fas fa-arrow-up"></i></button>
+                        <input class="amount" type="text" value="1">
+                        <button onclick="decrease()"><i class="fas fa-arrow-down"></i></button>
+                    </div>
+                    <div class="cart_btn">
+                        <button onclick="addCart()">장바구니담기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product_detail_page">
+            <p><span>상품 상세 정보</span></p>
+            <img src="images/detail1.jpg" alt="바지 상세화면">
+        </div>
+
+    </main>
+    <footer class="footer_box">
+        <div class="service_support">
+            <ul>
+                <li><a href="">회사소개</a></li>
+                <li><a href="">개인정보처리방침</a></li>
+                <li><a href="">이용약관</a></li>
+                <li><a href="">청소년 보호방침</a></li>
+                <li><a href="">입정상담</a></li>
+                <li><a href="">광고신청</a></li>
+            </ul>
+        </div>
+        <div class="footer_sentence">
+            <p>(주)스티브몰</p>
+            <b>고객센터 : 1234-5678</b>
+            <p>평일 <time datetime="09:00:00">09</time>~<time datetime="18:00:00">18</time>시</p>
+        </div>
+        <div class="quick_area">
+            <div class="btn_go_top" onclick="moveTop()">
+                <i class="fas fa-arrow-up fa-2x"></i>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const CART_LIST = 'cart_list';
+        let cart_list = [];
+
+        function getShippingDay() {
+            var date = new Date();
+            let array = ['일', '월', '화', '수', '목', '금', ' 토'];
+            let tomorrow = document.querySelector('.tomorrow');
+            tomorrow.innerHTML = (date.getDay() < 6) ? array[date.getDay() + 1] : array[0];
+        }
+
+        function increase() {
+            let amount = document.querySelector('.amount');
+            let result = Number(amount.value) + 1;
+            amount.value = result;
+        }
+
+        function decrease() {
+            let amount = document.querySelector('.amount');
+            let result = (Number(amount.value) >= 2 ? Number(amount.value) - 1 : 1);
+            amount.value = result;
+        }
+
+        function addCart() {
+            const pName = document.querySelector('.left_info');
+            const pAmount = document.querySelector('.amount');
+            const pPrice = document.querySelector('.product_price');
+            let index = cart_list.length;
+
+            const lists = {
+                id : index,
+                productName: pName.querySelector('h2').firstChild.nodeValue,
+                productCode: 01,
+                value: pAmount.value,
+                price: pPrice.querySelector('strong').firstChild.nodeValue,
+                shippingFee: '무료배송'
+            };
+
+            cart_list.push(lists);
+            localStorage.setItem(CART_LIST, JSON.stringify(cart_list));
+
+            if (localStorage.getItem(CART_LIST) !== '') {
+                alert('장바구니에 상품이 추가되었습니다.');
+            }
+        }
+
+        getShippingDay();
+    </script>
+
+</body>
+
+</html>

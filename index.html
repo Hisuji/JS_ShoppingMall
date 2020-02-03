@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <title>스티브뱅크몰</title>
+</head>
+
+<body>
+    <script src="js/common.js"></script>
+    <div class="header_top">
+        <div class="logo">
+            <img src="images/logo.png" alt="로고">
+        </div>
+        <div class="search_box">
+            <input type="">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="top_menu">
+            <ul class="top_list">
+                <li><a href="">장바구니</a></li>
+                <li><a href="">로그인</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <div class="main_menu">
+            <nav class="main_nav">
+                <ul>
+                    <li><a href="">패션</a></li>
+                    <li><a href="">잡화</a></li>
+                    <li><a href="">뷰티</a></li>
+                    <li><a href="">디지털</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <main class="home">
+        <div class="container">
+            <section class="main_banner">
+                <img id="banner" src="" alt="배너" />
+            </section>
+            <section class="product_box">
+                <h2>새로 만나는 신상품</h2>
+                <div class="product_list">
+                    <div class="product_detail">
+                        <div class="product_img">
+                            <img src="images/goods1.jpg" alt="상품1" />
+                        </div>
+                        <em><a href="">가죽 크로스 메신저백</a></em>
+                        <em>83,000원</em>
+                    </div>
+                    <div class="product_detail">
+                        <div class="product_img">
+                            <img src="images/goods2.jpg" alt="상품2" />
+                        </div>
+                        <em><a href="">가죽 펀칭 슈즈</a></em>
+                        <em>42,000원</em>
+                    </div>
+                    <div class="product_detail">
+                        <div class="product_img">
+                            <img src="images/goods3.jpg" alt="상품3" />
+                        </div>
+                        <em><a href="">슬림 스판 청바지</a></em>
+                        <em>24,000원</em>
+                    </div>
+                    <div class="product_detail">
+                        <div class="product_img">
+                            <img src="images/goods4.jpg" alt="상품4" />
+                        </div>
+                        <em><a href="">딸기 크로와상</a></em>
+                        <em>22,000원</em>
+                    </div>
+                    <div class="product_detail">
+                        <div class="product_img">
+                            <img src="images/goods5.jpg" alt="상품5" />
+                        </div>
+                        <em><a href="">라즈베리 마카롱</a></em>
+                        <em>19,000원</em>
+                    </div>
+                    <div class="product_detail">
+                        <div class="product_img">
+                            <img src="images/goods6.jpg" alt="상품1" />
+                        </div>
+                        <em><a href="">대나무 향초</a></em>
+                        <em>17,000원</em>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="footer_box">
+        <div class="service_support">
+            <ul>
+                <li><a href="">회사소개</a></li>
+                <li><a href="">개인정보처리방침</a></li>
+                <li><a href="">이용약관</a></li>
+                <li><a href="">청소년 보호방침</a></li>
+                <li><a href="">입정상담</a></li>
+                <li><a href="">광고신청</a></li>
+            </ul>
+        </div>
+        <div class="footer_sentence">
+            <p>(주)스티브몰</p>
+            <b>고객센터 : 1234-5678</b>
+            <p>평일 <time datetime="09:00:00">09</time>~<time datetime="18:00:00">18</time>시</p>
+        </div>
+        <div class="quick_area">
+            <div class="btn_go_top" onclick="moveTop()">
+                <i class="fas fa-arrow-up fa-2x"></i>
+            </div>
+        </div>
+    </footer>
+    <script>
+        var banner = document.getElementById('banner');
+        let switch_value = 0;
+
+        function play() {
+            banner.src = 'images/banner1.jpg';
+        }
+
+        function change() {
+            banner.src = 'images/banner2.jpg';
+        }
+
+        setInterval(function () {
+            switch (switch_value) {
+                case 0:
+                    play();
+                    switch_value = 1;
+                    break;
+
+                case 1:
+                    change();
+                    switch_value = 0;
+                    break;
+            }
+        }, 3000);
+
+        play();
+        addProduct();
+    </script>
+</body>
+
+</html>

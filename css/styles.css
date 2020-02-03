@@ -1,0 +1,290 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+/* index.html css */
+/* 초기화 */
+body {
+    font-family: 'Nanum Gothic', sans-serif;
+    min-width: 1200px;
+}
+
+a {
+    all: unset;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.header_top {
+    height: 50px;
+    padding-top: 10px;
+}
+
+.logo {
+    padding-left: 30px;
+    display: inline-block;
+}
+
+.logo img {
+    width: 90px;
+}
+
+.search_box {
+    display: inline-block;
+    width: 77%;
+    text-align: center;
+}
+
+.search_box input {
+    width: 400px;
+    border: 2px solid black;
+}
+
+.top_menu {
+    float: right;
+    margin-top: 15px;
+}
+
+.top_list li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.top_list li:last-child {
+    padding-right: 40px;
+}
+
+.header_bottom {
+    background-color: #4285F4;
+
+}
+
+.main_menu {
+    text-align: center;
+}
+
+.main_nav ul li {
+    display: inline-block;
+    padding: 20px 70px;
+    color: white;
+}
+
+.main_banner img {
+    width: 100%;
+}
+
+.product_box {
+    width: 1080px;
+    margin: 0 auto;
+
+}
+
+.product_box h2 {
+    text-align: center;
+    margin: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.product_list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.product_img {
+    overflow: hidden;
+}
+
+.product_detail img {
+    /* margin: 10px 0; */
+    width: 300px;
+}
+
+.product_detail img:hover {
+    transition: .3s;
+    transform: scale(1.2);
+}
+
+.product_detail em {
+    display: block;
+    margin: 5px 0;
+}
+
+.product_detail em:last-child {
+    font-weight: bold;
+}
+
+.product_detail em a:hover {
+    text-decoration: underline;
+}
+
+.footer_box {
+    margin-top: 30px;
+    border-top: 2px solid #DDDDDD;
+    min-height: 250px;
+}
+
+.service_support {
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 2px solid #DDDDDD;
+}
+
+.service_support ul li {
+    display: inline-block;
+    margin: 5px 50px;
+}
+
+.footer_sentence {
+    width: 1080px;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+    font-size: 0.8em;
+}
+
+.footer_sentence p {
+    margin: 5px 0;
+}
+
+.quick_area {
+    background-color: #EEEEEC;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 5px;
+}
+
+.quick_area:hover {
+    cursor: pointer;
+}
+
+.btn_go_top i {
+    margin-top: 5px;
+}
+
+/* detail.html css */
+.detail_main {
+    padding-top: 15px;
+}
+
+.detail_main .container {
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.container .right_img {
+    display: inline-block;
+}
+
+.right_img img {
+    width: 550px;
+}
+
+.container .left_info {
+    display: inline-block;
+}
+
+.left_info {
+    padding-left: 50px;
+    vertical-align: top;
+}
+
+.left_info h2 {
+    font-size: 1.5em;
+    margin: 40px 0;
+}
+
+.product_price,
+.product_shipping_fee {
+    margin-bottom: 20px;
+}
+
+.product_price strong {
+    font-weight: bold;
+}
+
+.cart_info {
+    margin-top: 50px;
+}
+
+.quantity_form {
+    display: inline-block;
+}
+
+.quantity_form input {
+    width: 20px;
+    margin: 0 -2px;
+    text-align: center;
+}
+
+.cart_btn {
+    display: inline-block;
+}
+
+.product_detail_page {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: 800px;
+}
+
+.product_detail_page img {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.product_detail_page p {
+    font-size: 1.6em;
+    padding: 5px;
+    border-bottom: 1px solid black;
+}
+
+/* cart.html css */
+h2.cart_title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+table,
+th,
+tr,
+td {
+    border: 1px solid red;
+}
+
+.cart_left,
+.cart_left table {
+    width: 100%;
+}
+
+.cart_left th {
+    height: 40px;
+    vertical-align: middle;
+    background-color: #EBEBEB;
+}
+
+.cart_left tbody td {
+    height: 130px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.cart_left th:first-child {
+    width: 300px;
+}
+
+.cart_left,
+.cart_right {
+    display: inline-block;
+}
+
+#orderBtn, #deleteBtn {
+    display: block;
+    margin: 5px auto;
+    
+
+}

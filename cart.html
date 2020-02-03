@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <title>스티브뱅크몰</title>
+</head>
+
+<body>
+    <script src="js/common.js"></script>
+    <div class="header_top">
+        <div class="logo">
+            <img src="images/logo.png" alt="로고">
+        </div>
+        <div class="search_box">
+            <input type="">
+            <i class="fas fa-search"></i>
+        </div>
+        <div class="top_menu">
+            <ul class="top_list">
+                <li><a href="">장바구니</a></li>
+                <li><a href="">로그인</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="header_bottom">
+        <div class="main_menu">
+            <nav class="main_nav">
+                <ul>
+                    <li><a href="">패션</a></li>
+                    <li><a href="">잡화</a></li>
+                    <li><a href="">뷰티</a></li>
+                    <li><a href="">디지털</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <main class="detail_main">
+        <div class="container">
+            <h2 class="cart_title"><i class="fas fa-credit-card"></i> 주문/결제</h2>
+            <div class="cart_left">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>상품정보</th>
+                            <th>수량</th>
+                            <th>상품금액</th>
+                            <th>할인금액</th>
+                            <th>할인적용금액</th>
+                            <th>배송비/판매자</th>
+                            <th>주문</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+    <footer class="footer_box">
+        <div class="service_support">
+            <ul>
+                <li><a href="">회사소개</a></li>
+                <li><a href="">개인정보처리방침</a></li>
+                <li><a href="">이용약관</a></li>
+                <li><a href="">청소년 보호방침</a></li>
+                <li><a href="">입정상담</a></li>
+                <li><a href="">광고신청</a></li>
+            </ul>
+        </div>
+        <div class="footer_sentence">
+            <p>(주)스티브몰</p>
+            <b>고객센터 : 1234-5678</b>
+            <p>평일 <time datetime="09:00:00">09</time>~<time datetime="18:00:00">18</time>시</p>
+        </div>
+        <div class="quick_area">
+            <div class="btn_go_top" onclick="moveTop()">
+                <i class="fas fa-arrow-up fa-2x"></i>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const cartTable = document.querySelector('.cart_left'),
+            cartTbody = document.querySelector('tbody');
+        const CART_LIST = 'cart_list';
+        const list = localStorage.getItem(CART_LIST);
+        let jsonArray = JSON.parse(list);
+        
+        function deleteProduct(event) {
+            const target = event.target;
+            const targetRow = target.parentNode.parentNode;
+            cartTbody.removeChild(targetRow);
+
+            const renewalCart = jsonArray.filter(function (rest) {
+                console.log(`target id ? ${targetRow.id}`);
+                return rest.id !== Number(targetRow.id);
+            });
+
+            console.log(renewalCart);
+
+            jsonArray = renewalCart;
+            localStorage.setItem(CART_LIST, JSON.stringify(jsonArray));
+
+            if (JSON.parse(localStorage.getItem(CART_LIST)).length === 0) {
+                getProduct();
+            }
+
+        }
+
+        function createTable(e) {
+            const tr = document.createElement("tr");
+            tr.id = e.id;
+            cartTbody.appendChild(tr);
+            let item = tr.appendChild(document.createElement("td"));
+            const buyBtn = document.createElement("button");
+            buyBtn.innerText = '주문'
+            const delBtn = document.createElement("button");
+            delBtn.innerText = '삭제'
+            buyBtn.id = 'orderBtn';
+            delBtn.id = 'deleteBtn';
+            item.innerText = e.productName;
+            
+            tr.appendChild(document.createElement("td")).innerText = e.value;
+            tr.appendChild(document.createElement("td")).innerText = e.price;
+            tr.appendChild(document.createElement("td")).innerText = 0;
+            tr.appendChild(document.createElement("td")).innerText = e.price;
+            tr.appendChild(document.createElement("td")).innerText = e.shippingFee;
+            let order = tr.appendChild(document.createElement("td"));
+            order.appendChild(buyBtn);
+            order.appendChild(delBtn);
+
+            delBtn.addEventListener("click", deleteProduct);
+        }
+
+        function getProduct() {
+
+            if (JSON.parse(localStorage.getItem(CART_LIST)).length === 0) {
+                const tr = document.createElement("tr");
+                cartTbody.appendChild(tr);
+                let none_item = tr.appendChild(document.createElement("td"));
+                let newAttribute = document.createAttribute("colspan");
+                newAttribute.value = "7";
+                none_item.setAttributeNode(newAttribute);
+                none_item.innerText = '장바구니에 담긴 상품이 없습니다.';
+            } else {
+                const parseList = JSON.parse(list);
+                parseList.forEach(function (e) {
+                    createTable(e);
+                });
+            }
+        }
+
+        getProduct();
+    </script>
+</body>
+
+</html>

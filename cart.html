@@ -14,9 +14,11 @@
 <body>
     <script src="js/common.js"></script>
     <div class="header_top">
-        <div class="logo">
-            <img src="images/logo.png" alt="로고">
-        </div>
+        <a href="index.html">
+            <div class="logo">
+                <img src="images/logo.png" alt="로고">
+            </div>
+        </a>
         <div class="search_box">
             <input type="">
             <i class="fas fa-search"></i>
@@ -89,8 +91,10 @@
             cartTbody = document.querySelector('tbody');
         const CART_LIST = 'cart_list';
         const list = localStorage.getItem(CART_LIST);
-        let jsonArray = JSON.parse(list);
-        
+        if (list !== '') {
+            let jsonArray = JSON.parse(list);
+        }
+
         function deleteProduct(event) {
             const target = event.target;
             const targetRow = target.parentNode.parentNode;
@@ -124,7 +128,7 @@
             buyBtn.id = 'orderBtn';
             delBtn.id = 'deleteBtn';
             item.innerText = e.productName;
-            
+
             tr.appendChild(document.createElement("td")).innerText = e.value;
             tr.appendChild(document.createElement("td")).innerText = e.price;
             tr.appendChild(document.createElement("td")).innerText = 0;
@@ -139,7 +143,7 @@
 
         function getProduct() {
 
-            if (JSON.parse(localStorage.getItem(CART_LIST)).length === 0) {
+            if (list === '' || JSON.parse(localStorage.getItem(CART_LIST)).length === 0) {
                 const tr = document.createElement("tr");
                 cartTbody.appendChild(tr);
                 let none_item = tr.appendChild(document.createElement("td"));

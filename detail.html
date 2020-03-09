@@ -14,16 +14,18 @@
 <body>
     <script src="js/common.js"></script>
     <div class="header_top">
-        <div class="logo">
-            <img src="images/logo.png" alt="로고">
-        </div>
+        <a href="index.html">
+            <div class="logo">
+                <img src="images/logo.png" alt="로고">
+            </div>
+        </a>
         <div class="search_box">
             <input type="">
             <i class="fas fa-search"></i>
         </div>
         <div class="top_menu">
             <ul class="top_list">
-                <li><a href="">장바구니</a></li>
+                <li><a href="cart.html">장바구니</a></li>
                 <li><a href="">로그인</a></li>
             </ul>
         </div>
@@ -124,7 +126,7 @@
             let index = cart_list.length;
 
             const lists = {
-                id : index,
+                id: index,
                 productName: pName.querySelector('h2').firstChild.nodeValue,
                 productCode: 01,
                 value: pAmount.value,

@@ -91,15 +91,15 @@
             cartTbody = document.querySelector('tbody');
         const CART_LIST = 'cart_list';
         const list = localStorage.getItem(CART_LIST);
+        let jsonArray;
         if (list !== '') {
-            let jsonArray = JSON.parse(list);
+            jsonArray = JSON.parse(list);
         }
 
         function deleteProduct(event) {
             const target = event.target;
             const targetRow = target.parentNode.parentNode;
             cartTbody.removeChild(targetRow);
-
             const renewalCart = jsonArray.filter(function (rest) {
                 console.log(`target id ? ${targetRow.id}`);
                 return rest.id !== Number(targetRow.id);
